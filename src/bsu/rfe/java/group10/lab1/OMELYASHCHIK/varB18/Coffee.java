@@ -35,4 +35,19 @@ public class Coffee extends Food {
     public String toString() {
         return super.toString() + "c ароматом '" + aroma.toUpperCase() + "'";
     }
+
+    @Override
+    public int calculateCalories() {
+        int calories = 0;
+        if(aroma.equals("Насыщенный")){
+            calories += 40;
+        }
+         else if (aroma.equals("Восточный")){
+            calories += 80;
+        }
+         else if (aroma.equals("Горький")){
+             calories += 120;
+        }
+        return calories;
+    }
 }
