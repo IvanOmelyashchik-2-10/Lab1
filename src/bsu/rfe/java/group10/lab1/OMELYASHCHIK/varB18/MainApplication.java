@@ -4,7 +4,7 @@ public class MainApplication {
 
     public static void main(String[] args) throws Exception{
         Food[] breakfast = new Food[args.length];
-        boolean sort_neaded = false;
+        boolean sort_needed = false;
         boolean calories_neaded = false;
         System.out.println("длина массива аргументов: " + args.length);
         int count_breakfast = 0;
@@ -12,7 +12,7 @@ public class MainApplication {
             if (args[itemIndex].equals("-calories")) {
                 calories_neaded = true;
             } else if (args[itemIndex].equals("-sort")) {
-                sort_neaded = true;
+                sort_needed = true;
             } else {
                 String[] parts = args[itemIndex].split("/");
                 String[] param = new String[parts.length - 1];
@@ -24,6 +24,28 @@ public class MainApplication {
             for (Food item : breakfast){
                 item.consume();
             }
-            
+        Food food = new Coffee("насыщеный");
+        System.out.println(food + ": " + countFoods(breakfast, food));
+        printFoods(breakfast);
+        System.out.println("Всего хорошего!");
+        static Integer countFoods(Food[] breakfast, Food food){
+            Integer count = 0;
+            for (int i = 0; i < breakfast.length; i++) {
+                if (food.equals(breakfast[i])) {
+                    count++;
+                }
+            }
+            return count;
+            static void printFoods (Food[]breakfast){
+                int a = 0;
+                for (int i = 0; i < breakfast.length; i++) {
+                    if (breakfast[i] instanceof Coffee) {
+                        a++;
+                    }
+                }
+                System.out.println("Кофе - " + a);
+
+            }
+        }
     }
 }
