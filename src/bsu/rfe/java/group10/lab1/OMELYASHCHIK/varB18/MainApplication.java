@@ -1,12 +1,12 @@
 package bsu.rfe.java.group10.lab1.OMELYASHCHIK.varB18;
     import java.util.Arrays;
-    import java.util.Comparator;
+
 public class MainApplication {
     public static void main(String[] args) throws Exception{
         Food[] breakfast = new  Food[20];
         boolean sort_needed = false;
         boolean calories_needed = false;
-        System.out.println("длина массива аргументов: " + args.length);
+        //System.out.println("длина массива аргументов: " + args.length);
 
         for (int itemIndex = 0; itemIndex < args.length; itemIndex++) {
             if (args[itemIndex].equals("-calories")) {
@@ -83,29 +83,20 @@ public class MainApplication {
             if (calories_needed) {
                 int calorii = 0;
                 for (int i = 0; i < count_breakfast; i++)
-                    calorii += breakfast[i].calculateCalories();
+                    calorii += breakfast_diff[i].calculateCalories();
                 System.out.println("калорийность: " + calorii);
             }
-            if (sort_needed) {
-                Arrays.sort(breakfast, new Comparator() {
-                    public int compare(Object f1, Object f2) {
-                        if (f1 == null) return 1;
-                        if (f2 == null) return -1;
-                        if (((Food) f1).calculateCalories() == ((Food) f2).calculateCalories()) return 0;
-                        if (((Food) f1).calculateCalories() < ((Food) f2).calculateCalories()) return -1;
-                        return 1;
-                    }
-                });
+            if(sort_needed) {
+                Arrays.sort(breakfast_diff, new FoodComparator());
                 System.out.println("отсортированные продукты");
                 for (int i = 0; i < count_breakfast; i++) {
-                    if (breakfast[i] == null) continue;
-                    System.out.println(breakfast[i].toString() + " " + breakfast[i].calculateCalories());
-                    //breakfast[i].consume();
-                }
-                System.out.print("Съедено продуктов: " + count_breakfast);
-                System.out.print("\nвсего хорошего!");
-            }
 
+                    System.out.println(breakfast_diff[i].toString() + " калорийностью " + breakfast_diff[i].calculateCalories());
+                }
+
+            }
+        System.out.println("Съедено продуктов: " + count_breakfast);
+        System.out.print("\nвсего хорошего!");
         }
     }
 

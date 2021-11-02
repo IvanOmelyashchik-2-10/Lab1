@@ -33,7 +33,7 @@ public class Coffee extends Food {
 
     @Override
     public String toString() {
-        return super.toString() + "c ароматом '" + aroma.toUpperCase() + "'";
+        return super.toString() + " c ароматом '" + aroma.toUpperCase() + "'";
     }
 
     @Override
